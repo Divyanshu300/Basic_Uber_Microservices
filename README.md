@@ -1,7 +1,9 @@
 
 # Basic Uber Microservices - User Service
 
-This project is a microservice-based **User Service** implemented using **Node.js** and **Express.js**, backed by a MongoDB database. It handles user authentication and profile management with secure JWT-based authentication and token blacklisting.
+This project is a microservice-based **Uber Clone** implemented using **Node.js** and **Express.js**, backed by a MongoDB database. It handles user with authentication and profile management with secure JWT-based authentication and token blacklisting
+similarly captain with authentication and profile management with secure JWT-based authentication and token blacklisting
+and rides all running at different servers to increase peformance and scaling of individuals.
 
 ---
 
@@ -10,26 +12,28 @@ This project is a microservice-based **User Service** implemented using **Node.j
 ```plaintext
 BASIC_UBER_MICROSERVICES/
 │
-├── config/
-│   └── DB.js                # MongoDB connection file
+├── user
+│     ├── config/
+│     │   └── DB.js                # MongoDB connection file
+│     │
+│     ├── controllers/
+│     │   └── user.controller.js   # User-related functions: register, login, logout, profile
+│     │
+│     ├── middleware/
+│     │   └── auth.js              # Authentication middleware using JWT tokens
+│     │
+│     ├── models/
+│     │   ├── blacklistToken.model.js # Schema to blacklist logged-out JWT tokens
+│     │   └── user.model.js        # User Schema: name, email, and password
+│     │
+│     ├── routes/
+│     │    └── user.routes.js       # Express routes for handling user actions
+│     │     
+│     ├── .env                     # Environment variables
+│     ├── index.js                 # Entry point connecting routes and middlewares
+│     ├── server.js                # HTTP Server configuration
+│     └── package.json             # Project dependencies
 │
-├── controllers/
-│   └── user.controller.js   # User-related functions: register, login, logout, profile
-│
-├── middleware/
-│   └── auth.js              # Authentication middleware using JWT tokens
-│
-├── models/
-│   ├── blacklistToken.model.js # Schema to blacklist logged-out JWT tokens
-│   └── user.model.js        # User Schema: name, email, and password
-│
-├── routes/
-│   └── user.routes.js       # Express routes for handling user actions
-│
-├── .env                     # Environment variables
-├── index.js                 # Entry point connecting routes and middlewares
-├── server.js                # HTTP Server configuration
-├── package.json             # Project dependencies
 └── README.md                # Project documentation (this file)
 ```
 
@@ -158,6 +162,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## **Author**
 
-[Divyanshu Pathak]
+Divyanshu Pathak
 
 ---
