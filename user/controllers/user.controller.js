@@ -35,9 +35,13 @@ exports.register = async (req , res) => {
 
         res.cookie('token' , token);
 
+        delete user._doc.password; //TO DELETE THE PASSWORD BEFORE SENDING IN RESPONSE TO HIDE IT FROM OTHERS 
+
         res.status(201).json({
             success : true,
-            message : "User created successfully"
+            message : "User created successfully",
+            token,
+            newUser
         })
     }
     catch(error) {
@@ -81,9 +85,13 @@ exports.login = async (req , res) => {
 
         res.cookie("token" , token);
 
+        delete user._doc.password; //TO DELETE THE PASSWORD BEFORE SENDING IN RESPONSE TO HIDE IT FROM OTHERS 
+
         res.status(200).json({
             success : true,
-            message : "User LoggedIn Successfully"
+            message : "User LoggedIn Successfully",
+            token,
+            user
         });
     }
     catch(error) {
@@ -120,7 +128,7 @@ exports.profile = (req , res) => {
         const user = req.user;
 
         res.status(200).json({
-            success : false,
+            success : true,
             message : "User Details fetched successfully",
             user : user
         })
